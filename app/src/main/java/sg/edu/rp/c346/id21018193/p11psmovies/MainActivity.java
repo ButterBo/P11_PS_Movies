@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         //test
         btnShow = findViewById(R.id.buttonShow);
         btnInsert = findViewById(R.id.buttonInsert);
-        btnFilter = findViewById(R.id.buttonFilter);
+//        btnFilter = findViewById(R.id.buttonFilter);
         lvMovies = findViewById(R.id.listViewMovies);
 //        spnFilter = findViewById(R.id.spinner);
         alMoviesList = new ArrayList<>();
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 //
 //                final EditText etFilter = viewDialog.findViewById(R.id.editTextFilter);
 //
-//                if(spnFilter.getSelectedItem()=="Title"){
+//                if(spnFilter.getSelectedItem().equals("Title")){
 //                    AlertDialog.Builder myBuilder = new AlertDialog.Builder(MainActivity.this);
 //                    myBuilder.setView(viewDialog);  // Set the view of the dialog
 //                    myBuilder.setTitle("Filter Title");

@@ -43,11 +43,11 @@
 <!--        android:entries="@array/spinFilter"-->
 <!--        android:minHeight="48dp" />-->
 
-    <Button
-        android:id="@+id/buttonFilter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Find movie title" />
+<!--    <Button-->
+<!--        android:id="@+id/buttonFilter"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Find movie title" />-->
 
     <ListView
         android:id="@+id/listViewMovies"
