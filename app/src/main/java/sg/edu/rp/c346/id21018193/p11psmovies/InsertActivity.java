@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class InsertActivity extends AppCompatActivity {
 
     EditText title, genre, year;
@@ -31,26 +33,43 @@ public class InsertActivity extends AppCompatActivity {
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(!title.getText().toString().isEmpty()){
-//                    may add later
-//                }
-                String inTitle = title.getText().toString();
-                String inGenre = genre.getText().toString();
-                String yearText = year.getText().toString();
-                int inyear = Integer.parseInt(yearText);
-                String inRating = rating.getSelectedItem().toString();
+                if (!title.getText().toString().isEmpty()) {
+                    if (!genre.getText().toString().isEmpty()) {
+                        if (!year.getText().toString().isEmpty()) {
+                            Calendar now = Calendar.getInstance();
+                            int currentY = now.get(Calendar.YEAR);
+                            int inputY = Integer.parseInt(year.getText().toString());
+                            if ((inputY > 1888) && (inputY <= currentY)) {
+                                String inTitle = title.getText().toString();
+                                String inGenre = genre.getText().toString();
+                                String yearText = year.getText().toString();
+                                int inyear = Integer.parseInt(yearText);
+                                String inRating = rating.getSelectedItem().toString();
 
-                DBHelper dbh = new DBHelper(InsertActivity.this);
-                long insert_id = dbh.insertMovie(inTitle, inGenre, inyear, inRating);
+                                DBHelper dbh = new DBHelper(InsertActivity.this);
+                                long insert_id = dbh.insertMovie(inTitle, inGenre, inyear, inRating);
 
-                if (insert_id != -1) {//if insertion is successful
-                    Toast.makeText(InsertActivity.this, "Added " + inTitle + " to the database successfully", Toast.LENGTH_LONG).show();
-                    title.setText("");
-                    genre.setText("");
-                    year.setText("");
-                    rating.setSelection(0);
-                } else {//insertion failed
-                    Toast.makeText(InsertActivity.this, inTitle + " failed to insert into database", Toast.LENGTH_LONG).show();
+                                if (insert_id != -1) {//if insertion is successful
+                                    Toast.makeText(InsertActivity.this, "Added " + inTitle + " to the database successfully", Toast.LENGTH_LONG).show();
+                                    title.setText("");
+                                    genre.setText("");
+                                    year.setText("");
+                                    rating.setSelection(0);
+                                } else {//insertion failed
+                                    Toast.makeText(InsertActivity.this, inTitle + " failed to insert into database", Toast.LENGTH_LONG).show();
+                                }
+                            } else {
+                                Toast.makeText(InsertActivity.this, "Invalid year input, must be between 1888 to " + currentY, Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(InsertActivity.this, "Year cannot be empty", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(InsertActivity.this, "Genre cannot be empty", Toast.LENGTH_LONG).show();
+                    }
+
+                } else {
+                    Toast.makeText(InsertActivity.this, "Title cannot be empty", Toast.LENGTH_LONG).show();
                 }
             }
         });
