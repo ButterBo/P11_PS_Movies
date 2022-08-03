@@ -18,30 +18,30 @@
         app:backgroundTint="#64BD42"
         tools:ignore="TextContrastCheck" />
 
-    <Button
-        android:id="@+id/buttonShow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:text="@string/show_all_movies"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:backgroundTint="#52A631"
-        tools:ignore="TextContrastCheck" />
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
+<!--    <Button-->
+<!--        android:id="@+id/buttonShow"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:fontFamily="casual"-->
-<!--        android:text="Rating"-->
-<!--        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />-->
+<!--        android:text="@string/show_all_movies"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+<!--        app:backgroundTint="#52A631"-->
+<!--        tools:ignore="TextContrastCheck" />-->
 
-<!--    <Spinner-->
-<!--        android:id="@+id/spinner"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:entries="@array/spinFilter"-->
-<!--        android:minHeight="48dp" />-->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Rating"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/spinnerItems2"
+        android:minHeight="48dp" />
 
 <!--    <Button-->
 <!--        android:id="@+id/buttonFilter"-->

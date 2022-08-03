@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,24 +31,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //test
-        btnShow = findViewById(R.id.buttonShow);
+//        btnShow = findViewById(R.id.buttonShow);
         btnInsert = findViewById(R.id.buttonInsert);
 //        btnFilter = findViewById(R.id.buttonFilter);
         lvMovies = findViewById(R.id.listViewMovies);
-//        spnFilter = findViewById(R.id.spinner);
+        spnFilter = findViewById(R.id.spinner);
         alMoviesList = new ArrayList<>();
         caMovies = new CustomAdapter(this, R.layout.row, alMoviesList);
         lvMovies.setAdapter(caMovies);
 
-        btnShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DBHelper dbh = new DBHelper(MainActivity.this);
-                alMoviesList.clear();
-                alMoviesList.addAll(dbh.getAllMovie());
-                caMovies.notifyDataSetChanged();
-            }
-        });
+//        btnShow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                DBHelper dbh = new DBHelper(MainActivity.this);
+//                alMoviesList.clear();
+//                alMoviesList.addAll(dbh.getAllMovie());
+//                caMovies.notifyDataSetChanged();
+//            }
+//        });
 
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,35 +60,34 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //filter isnt working for now
-//        spnFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                String filtertext ="";
-//                if(spnFilter.getSelectedItem().equals("G")){
-//                    filtertext = "G";
-//                } else if(spnFilter.getSelectedItem().equals("PG")) {
-//                    filtertext = "PG";
-//                } else if(spnFilter.getSelectedItem().equals("PG13")) {
-//                    filtertext = "PG13";
-//                } else if(spnFilter.getSelectedItem().equals("NC16")) {
-//                    filtertext = "NC16";
-//                } else if(spnFilter.getSelectedItem().equals("M18")){
-//                    filtertext = "M18";
-//                }else if(spnFilter.getSelectedItem().equals("R21")){
-//                    filtertext = "R21";
-//                }
-//                DBHelper dbh = new DBHelper(MainActivity.this);
-//                alMoviesList.clear();
-//                alMoviesList.addAll(dbh.getFilterMovie(filtertext));
-//                caMovies.notifyDataSetChanged();
-//
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
+        spnFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                DBHelper dbh = new DBHelper(MainActivity.this);
+                String rating = spnFilter.getSelectedItem().toString();
+
+                if (!rating.equals("Show all movies")) {
+                    alMoviesList.clear();
+                    alMoviesList.addAll(dbh.getAllMoviesByRating(rating));
+                    caMovies.notifyDataSetChanged();
+
+                    alMoviesList.clear();
+                    alMoviesList.addAll(dbh.getAllMoviesByRating(rating));
+                    caMovies.notifyDataSetChanged();
+
+                    Toast.makeText(MainActivity.this, "Displaying all songs rated " + rating, Toast.LENGTH_SHORT).show();
+                } else {
+                    alMoviesList.clear();
+                    alMoviesList.addAll(dbh.getAllMovie());
+                    caMovies.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 //        spnFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override

@@ -25,11 +25,13 @@
         <item>R21</item>
     </string-array>
 
-    <string-array name="spinFilter">
-        <item></item>
-        <item>Title</item>
-        <item>Genre</item>
-        <item>Year</item>
-        <item>Rating</item>
+    <string-array name="spinnerItems2">
+        <item>Show all movies</item>
+        <item>G</item>
+        <item>PG</item>
+        <item>PG13</item>
+        <item>NC16</item>
+        <item>M18</item>
+        <item>R21</item>
     </string-array>
 </resources>
