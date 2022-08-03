@@ -109,6 +109,34 @@ public class DBHelper extends SQLiteOpenHelper {
         return notes;
     }
 
+    public ArrayList<Movies> getFilterTitle(String filterText) {
+        ArrayList<Movies> notes = new ArrayList<Movies>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {COLUMN_ID, COLUMN_TITLE, COLUMN_GENRE, COLUMN_YEAR, COLUMN_RATING};
+        String condition = COLUMN_TITLE + " Like ?";
+        String[] args = { "%" +  filterText + "%"};
+        Cursor cursor = db.query(TABLE_MOVIE, columns, null, null,
+                null, null, COLUMN_RATING, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String title = cursor.getString(1);
+                String genre = cursor.getString(2);
+                int year = Integer.parseInt(cursor.getString(3));
+                String ratings = cursor.getString(4);
+
+                Movies movie = new Movies(id, title, genre, year, ratings);
+                notes.add(movie);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return notes;
+    }
+
         public int updateMovie(Movies data){//replace data with the value in dbh.updateSong(value);
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();

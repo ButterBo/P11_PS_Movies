@@ -133,13 +133,7 @@ public class ModifyActivity extends AppCompatActivity {
                     }
                 });
 
-                myBuilder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
-
+                myBuilder.setPositiveButton("Cancel", null);
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
             }
@@ -162,12 +156,7 @@ public class ModifyActivity extends AppCompatActivity {
                     }
                 });
 
-                myBuilder.setPositiveButton("Do not Discard", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
+                myBuilder.setPositiveButton("Do not Discard", null);
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();

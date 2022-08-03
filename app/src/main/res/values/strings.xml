@@ -24,4 +24,11 @@
         <item>M18</item>
         <item>R21</item>
     </string-array>
+
+    <string-array name="spinFilter">
+        <item>Title</item>
+        <item>Genre</item>
+        <item>Year</item>
+        <item>Rating</item>
+    </string-array>
 </resources>
