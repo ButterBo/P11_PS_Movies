@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     alMoviesList.clear();
                     alMoviesList.addAll(dbh.getAllMoviesByRating(rating));
                     caMovies.notifyDataSetChanged();
-
+//test
                     Toast.makeText(MainActivity.this, "Displaying all songs rated " + rating, Toast.LENGTH_SHORT).show();
                 } else {
                     alMoviesList.clear();
